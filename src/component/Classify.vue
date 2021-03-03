@@ -70,12 +70,11 @@ ul {
 import BSscroll from 'better-scroll'
 export default {
   name: 'Classify',
-  mounted () {
+  mounted() {
     const bs = new BSscroll('#nav', {
       scrollX: true,
       scrollY: false
     })
-    console.log(bs)
   }
 }
 </script>

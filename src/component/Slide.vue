@@ -36,7 +36,6 @@ export default {
     }
   },
   mounted () {
-    console.log(BScroll)
     const bs = new BScroll(this.$refs.slide, {
       scrollX: true,
       scrollY: false,
@@ -46,7 +45,6 @@ export default {
         loop: true
       }
     })
-    console.log(bs)
   }
 }
 </script>

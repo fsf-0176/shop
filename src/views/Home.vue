@@ -1,23 +1,22 @@
 <template>
   <wrap>
+    <search :pos="{type:'static',padding:0,'radius':0}" text="Home Search" />
     <slide />
     <classify />
-    <div class="home main">
-      <div class="wrap">
+    <div class="home main padding-bottom">
+      <div class="wrap" v-for="item of categoryList" :key="item.id">
         <div class="classifyImg">
-          <img src="../assets/images/type1.jpg" alt="" />
-          <span>居家</span>
+          <img :src="item[0].banner" alt="" />
+          <span>{{ item[0].name }}</span>
         </div>
         <ul class="pro_list">
-          <li>
+          <li v-for="list of item" :key="list.id">
             <a class="pic" href="#">
-              <img
-                src="https://githttps.hiolabs.com/5b7c1d0a-a12f-48e5-9487-efb1a81a6864"
-              />
+              <img :src="list.src" />
             </a>
             <a href="#">
-              <p>支付测试兼打赏</p>
-              <span>¥ 0.5</span>
+              <p>{{ list.title }}</p>
+              <span>¥ {{ list.money }}</span>
             </a>
           </li>
         </ul>
@@ -30,17 +29,19 @@
 import Slide from '../component/Slide'
 import Classify from '../component/Classify'
 import Wrap from '../component/Wrap'
+import Search from '../component/Search'
+
+const a = '1'
 export default {
   name: 'Home',
-  components: { Slide, Classify, Wrap },
-  data () {
+  components: { Slide, Classify, Wrap, Search },
+  data() {
     return {
       categoryList: []
     }
   },
-  created () {
+  created() {
     const data = []
-    const dataItem = {}
     const names = [
       { type: 'type', name: '居家' },
       { type: 'type', name: '餐厨' },
@@ -48,21 +49,21 @@ export default {
       { type: 'type', name: '杂货' },
       { type: 'type', name: '志趣' }
     ]
-    names.forEach(item => {
+    for (let k = 0; k < names.length; k++) {
+      data[k] = {}
       for (let i = 0; i < 6; i++) {
-        dataItem[i] = {
-          name: item.name,
-          src: 'https://githttps.hiolabs.com/5b7c1d0a-a12f-48e5-9487-efb1a81a6864',
+        data[k][i] = {
+          name: names[k].name,
+          src:
+            'https://githttps.hiolabs.com/5b7c1d0a-a12f-48e5-9487-efb1a81a6864',
           title: '支付测试兼打赏',
           money: '0.5',
-          banner: 'http://nos.netease.com/yanxuan/a0c91ae573079830743dec6ee08f5841.jpg'
+          banner:
+            'http://nos.netease.com/yanxuan/f0d0e1a542e2095861b42bf789d948ce.jpg'
         }
       }
-    })
-    for (let i = 0; i < 5; i++) {
-      data.push(dataItem)
     }
-    console.log(data)
+    this.categoryList = data
   }
 }
 </script>
@@ -83,7 +84,7 @@ export default {
       font-size: 0.25rem;
       text-decoration: none;
       p {
-        color: #1f1f1f;
+        color: #313131;
         line-height: 2;
       }
       span {

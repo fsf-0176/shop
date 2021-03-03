@@ -1,14 +1,54 @@
-body,ul,ol,p{
+body,
+ul,
+ol,
+p {
     padding: 0;
     margin: 0;
-    // background: red;
 }
-body{
-    padding-bottom: 2rem;
+
+body {
+    min-height: 100%;
+    height: 100%;
+    max-width: 750px;
 }
-li{
+
+@media screen and (min-width: 750px) {
+    body {
+        box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.24), -1px -1px 1px rgba(0, 0, 0, 0.24);
+        // height: auto;
+        min-height: 100%;
+    }
+}
+
+html {
+    min-height: 100%;
+    height: 100%;
+    max-width: 750px;
+    margin: auto;
+}
+
+.padding-bottom {
+    padding-bottom: 2rem !important;
+}
+
+a,
+a:hover,
+a:active,
+a:visited,
+a:link,
+a:focus {
+    user-select: none;
+    background: none;
+    outline: none;
+    text-decoration: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    color: #313131;
+}
+
+li {
     list-style: none;
 }
-.main{
+
+.main {
     padding: 0 .2rem;
 }
