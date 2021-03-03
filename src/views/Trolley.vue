@@ -20,6 +20,10 @@ export default {
   height: 100%;
   background: rgb(250, 250, 250);
   & > .noItems {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
     text-align: center;
     color: #ccc;
     i {
