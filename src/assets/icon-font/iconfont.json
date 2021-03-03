@@ -104,6 +104,13 @@
       "unicode_decimal": 58627
     },
     {
+      "icon_id": "11853109",
+      "name": "关于我们",
+      "font_class": "guanyuwomen1",
+      "unicode": "f165",
+      "unicode_decimal": 61797
+    },
+    {
       "icon_id": "11999681",
       "name": "上",
       "font_class": "shang",

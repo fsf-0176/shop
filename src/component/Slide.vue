@@ -45,7 +45,6 @@ export default {
         loop: true
       }
     })
-    console.log(bs)
   }
 }
 </script>

@@ -1,23 +1,22 @@
 <template>
   <wrap>
+    <search :pos="{type:'static',padding:0,'radius':0}" text="Home Search" />
     <slide />
     <classify />
     <div class="home main padding-bottom">
       <div class="wrap" v-for="item of categoryList" :key="item.id">
         <div class="classifyImg">
           <img :src="item[0].banner" alt="" />
-          <span>{{item[0].name}}</span>
+          <span>{{ item[0].name }}</span>
         </div>
         <ul class="pro_list">
           <li v-for="list of item" :key="list.id">
             <a class="pic" href="#">
-              <img
-                :src="list.src"
-              />
+              <img :src="list.src" />
             </a>
             <a href="#">
-              <p>{{list.title}}</p>
-              <span>¥ {{list.money}}</span>
+              <p>{{ list.title }}</p>
+              <span>¥ {{ list.money }}</span>
             </a>
           </li>
         </ul>
@@ -30,15 +29,18 @@
 import Slide from '../component/Slide'
 import Classify from '../component/Classify'
 import Wrap from '../component/Wrap'
+import Search from '../component/Search'
+
+const a = '1'
 export default {
   name: 'Home',
-  components: { Slide, Classify, Wrap },
-  data () {
+  components: { Slide, Classify, Wrap, Search },
+  data() {
     return {
       categoryList: []
     }
   },
-  created () {
+  created() {
     const data = []
     const names = [
       { type: 'type', name: '居家' },
@@ -52,10 +54,12 @@ export default {
       for (let i = 0; i < 6; i++) {
         data[k][i] = {
           name: names[k].name,
-          src: 'https://githttps.hiolabs.com/5b7c1d0a-a12f-48e5-9487-efb1a81a6864',
+          src:
+            'https://githttps.hiolabs.com/5b7c1d0a-a12f-48e5-9487-efb1a81a6864',
           title: '支付测试兼打赏',
           money: '0.5',
-          banner: 'http://nos.netease.com/yanxuan/f0d0e1a542e2095861b42bf789d948ce.jpg'
+          banner:
+            'http://nos.netease.com/yanxuan/f0d0e1a542e2095861b42bf789d948ce.jpg'
         }
       }
     }

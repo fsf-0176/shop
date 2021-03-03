@@ -8,10 +8,10 @@
         </router-link>
       </li>
       <li>
-        <a href="#">
+        <router-link to="/category">
           <i class="iconfont icon-category"></i>
           <span>分类</span>
-        </a>
+        </router-link>
       </li>
       <li>
         <a href="#">
@@ -30,36 +30,37 @@
 </template>
 <style lang="less" scoped>
 @import url('../assets/icon-font/iconfont.css');
-footer{
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 7.5rem;
-    &>ul{
-        display: flex;
-        justify-content: space-around;
-        background: white;
-        padding: .1rem 0;
-        &>li{
-            flex: 1;
-            list-style: none;
-            &>a{
-                color: #7b7b7b;
-                text-decoration: none;
-                text-align: center;
-                &>i{
-                    display: block;
-                    font-size: .6rem;
-                }
-                &>span{
-                    display: block;
-                }
-                font-size: .25rem;
-            }
-            &>a.router-link-exact-active{
-              color: rgb(255, 52, 86);
-            }
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  width: 7.5rem;
+  transform: translateX(-50%);
+  & > ul {
+    display: flex;
+    justify-content: space-around;
+    background: white;
+    padding: 0.1rem 0;
+    & > li {
+      flex: 1;
+      list-style: none;
+      & > a {
+        color: #7b7b7b;
+        text-decoration: none;
+        text-align: center;
+        & > i {
+          display: block;
+          font-size: 0.6rem;
         }
+        & > span {
+          display: block;
+        }
+        font-size: 0.25rem;
+      }
+      & > a.router-link-exact-active {
+        color: rgb(255, 52, 86);
+      }
     }
+  }
 }
 </style>
