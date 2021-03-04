@@ -4,10 +4,10 @@
     <div class="wrap">
       <div class="menus">
         <ul>
-          <li class="active">
+          <li>
             <a href="#"> 全部 </a>
           </li>
-          <li>
+          <li class="active">
             <a href="#"> 居家 </a>
           </li>
           <li>
@@ -24,7 +24,116 @@
           </li>
         </ul>
       </div>
-      <div class="product"></div>
+      <div class="product">
+        <div class="banner">
+          <img
+            src="http://nos.netease.com/yanxuan/f0d0e1a542e2095861b42bf789d948ce.jpg"
+          />
+          <span>居家</span>
+        </div>
+        <ul class="pro_list">
+          <li>
+            <a href="" class="pic">
+              <img
+                src="https://githttps.hiolabs.com/5b7c1d0a-a12f-48e5-9487-efb1a81a6864"
+              />
+            </a>
+            <a href="#">
+              <p>云端沙发组合</p>
+              <span>¥ 3999</span>
+            </a>
+          </li>
+          <li>
+            <a href="" class="pic">
+              <img
+                src="https://githttps.hiolabs.com/5b7c1d0a-a12f-48e5-9487-efb1a81a6864"
+              />
+            </a>
+            <a href="#">
+              <p>云端沙发组合</p>
+              <span>¥ 3999</span>
+            </a>
+          </li>
+          <li>
+            <a href="" class="pic">
+              <img
+                src="https://githttps.hiolabs.com/5b7c1d0a-a12f-48e5-9487-efb1a81a6864"
+              />
+            </a>
+            <a href="#">
+              <p>云端沙发组合</p>
+              <span>¥ 3999</span>
+            </a>
+          </li>
+          <li>
+            <a href="" class="pic">
+              <img
+                src="https://githttps.hiolabs.com/5b7c1d0a-a12f-48e5-9487-efb1a81a6864"
+              />
+            </a>
+            <a href="#">
+              <p>云端沙发组合</p>
+              <span>¥ 3999</span>
+            </a>
+          </li>
+          <li>
+            <a href="" class="pic">
+              <img
+                src="https://githttps.hiolabs.com/5b7c1d0a-a12f-48e5-9487-efb1a81a6864"
+              />
+            </a>
+            <a href="#">
+              <p>云端沙发组合</p>
+              <span>¥ 3999</span>
+            </a>
+          </li>
+          <li>
+            <a href="" class="pic">
+              <img
+                src="https://githttps.hiolabs.com/5b7c1d0a-a12f-48e5-9487-efb1a81a6864"
+              />
+            </a>
+            <a href="#">
+              <p>云端沙发组合</p>
+              <span>¥ 3999</span>
+            </a>
+          </li>
+          <li>
+            <a href="" class="pic">
+              <img
+                src="https://githttps.hiolabs.com/5b7c1d0a-a12f-48e5-9487-efb1a81a6864"
+              />
+            </a>
+            <a href="#">
+              <p>云端沙发组合</p>
+              <span>¥ 3999</span>
+            </a>
+          </li>
+          <li>
+            <a href="" class="pic">
+              <img
+                src="https://githttps.hiolabs.com/5b7c1d0a-a12f-48e5-9487-efb1a81a6864"
+              />
+            </a>
+            <a href="#">
+              <p>云端沙发组合</p>
+              <span>¥ 3999</span>
+            </a>
+          </li>
+          <li>
+            <a href="" class="pic">
+              <img
+                src="https://githttps.hiolabs.com/5b7c1d0a-a12f-48e5-9487-efb1a81a6864"
+              />
+            </a>
+            <a href="#">
+              <p>云端沙发组合</p>
+              <span>¥ 3999</span>
+            </a>
+          </li>
+        </ul>
+        <div class="bottomText">- 这是底线了 -</div>
+      </div>
     </div>
     <navbar />
   </div>
@@ -38,13 +147,17 @@ export default {
 }
 </script>
 <style lang="less" scoped>
+.bottomText{
+  font-size: 0.3rem;
+    text-align: center;
+    color: #ccc;
+}
 .wrap {
-  padding: 1.25rem 0.2rem 0;
-  display: flex;
+  padding: 1.35rem 0.2rem 0;
   .menus {
     position: fixed;
     left: 0;
-    top: 1.25rem;
+    top: 1.35rem;
     background: rgb(250, 250, 250);
     width: 2rem;
     height: calc(100% - 2.45rem);
@@ -65,7 +178,51 @@ export default {
     }
   }
   .product {
-    flex: 7;
+    width: 5.4rem;
+    position: absolute;
+    right: 0;
+    padding-bottom: 1.5rem;
+    & > .pro_list > li {
+      width: 50%;
+      padding: 0 .1rem;
+    }
+    & > .pro_list > li:nth-child(odd){
+      padding-left: 0;
+    }
+
+    & > .pro_list > li:nth-child(3n) {
+      padding-right: .1rem;
+    }
+    & > .pro_list > li:nth-child(even){
+      padding-right: 0;
+    }
+    & .pro_list > li:nth-child(3n) .pic {
+      padding: 0;
+    }
+    & > .pro_list{
+      padding-top: .2rem;
+    }
+    & > .banner {
+      overflow: hidden;
+      position: relative;
+      border-radius: 0.15rem;
+      img {
+        display: block;
+      }
+      & > span {
+        position: absolute;
+        left: 0;
+        top: 0;
+        background: rgba(0, 0, 0, 0.28);
+        width: 100%;
+        height: 100%;
+        color: white;
+        font-size: 0.4rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
   }
 }
 </style>

@@ -14,7 +14,7 @@ export default {
       type: Object,
       default: () => ({
         type: 'fixed',
-        padding: '0.25rem 0.25rem 0',
+        padding: '0.25rem',
         radius: '0.5rem'
       })
     },
@@ -27,11 +27,13 @@ export default {
 </script>
 <style lang="less" scoped>
 .search {
-  padding: 0.25rem 0.25rem 0;
+  padding: 0.25rem;
   position: fixed;
   width: 7.5rem;
   left: 0;
   top: 0;
+  z-index: 2;
+  background: white;
   box-sizing: border-box;
   & > a {
     background: rgb(249, 249, 249);

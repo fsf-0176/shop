@@ -14,10 +14,10 @@
         </router-link>
       </li>
       <li>
-        <a href="#">
+        <router-link to="/trolley">
           <i class="iconfont icon-gouwuche"></i>
           <span>购物车</span>
-        </a>
+        </router-link>
       </li>
       <li>
         <router-link to="/about">
