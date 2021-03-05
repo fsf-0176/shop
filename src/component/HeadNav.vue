@@ -1,6 +1,6 @@
 <template>
   <header>
-    <div class="back iconfont icon-zuo"></div>
+    <div class="back iconfont icon-zuo" @click="go"></div>
     <div class="title">{{ title }}</div>
     <div></div>
   </header>
@@ -13,6 +13,11 @@ export default {
       type: String,
       default: '标题'
     }
+  },
+  methods: {
+    go() {
+      this.$router.back(-1)
+    }
   }
 }
 </script>
@@ -24,6 +29,8 @@ header {
   background: white;
   height: 1rem;
   line-height: 1rem;
+//   border-bottom: .01rem solid #efefef;
+  box-sizing: border-box;
   & > .back {
     position: absolute;
     left: 0;

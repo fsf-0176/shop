@@ -11,9 +11,9 @@ const routes = [
     component: Home
   },
   {
-    path: '/about',
-    name: 'About',
-    component: () => import('../views/About.vue')
+    path: '/user',
+    name: 'User',
+    component: () => import('../views/User.vue')
   },
   {
     path: '/category',
@@ -29,6 +29,21 @@ const routes = [
     path: '/track',
     name: 'Track',
     component: () => import('../views/Track.vue')
+  },
+  {
+    path: '/about',
+    name: 'About',
+    component: () => import('../views/About.vue')
+  },
+  {
+    path: '/order',
+    name: 'Order',
+    component: () => import('../views/Order.vue')
+  },
+  {
+    path: '/order-detail',
+    name: 'OrderDetail',
+    component: () => import('../views/OrderDetail.vue')
   }
 ]
 
