@@ -57,13 +57,13 @@
         </a>
       </li>
       <li class="top">
-        <a href="#">
+        <router-link to="/track">
           <span>
             <i class="iconfont icon-zuji"></i>
             我的足迹
           </span>
           <i class="iconfont icon-you"></i>
-        </a>
+        </router-link>
       </li>
       <li class="">
         <a href="#">
@@ -100,29 +100,29 @@ export default {
 ul.address {
   & > li {
     background: white;
-    padding: 0 .2rem;
+    padding: 0 0.2rem;
     & > a {
       display: flex;
-      padding: .3rem 0;
+      padding: 0.3rem 0;
       justify-content: space-between;
       align-items: center;
       font-size: 0.35rem;
       border-bottom: 1px solid #ccc;
     }
 
-    i{
-      font-size: .35rem;
+    i {
+      font-size: 0.35rem;
     }
   }
-  & > li:last-child a{
+  & > li:last-child a {
     border: none;
   }
-  & > li a.borderNone{
+  & > li a.borderNone {
     border: none;
   }
-  & > li.top{
-      margin-top: .25rem;
-    }
+  & > li.top {
+    margin-top: 0.25rem;
+  }
 }
 .status {
   display: flex;
