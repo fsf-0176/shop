@@ -34,6 +34,13 @@
       "unicode_decimal": 59030
     },
     {
+      "icon_id": "2051040",
+      "name": "phone 手机",
+      "font_class": "phone",
+      "unicode": "e602",
+      "unicode_decimal": 58882
+    },
+    {
       "icon_id": "2244884",
       "name": "客服",
       "font_class": "kefu",
@@ -46,6 +53,13 @@
       "font_class": "zuji",
       "unicode": "e502",
       "unicode_decimal": 58626
+    },
+    {
+      "icon_id": "4488839",
+      "name": "姓名",
+      "font_class": "xingming",
+      "unicode": "e62a",
+      "unicode_decimal": 58922
     },
     {
       "icon_id": "4856432",
@@ -79,8 +93,8 @@
       "icon_id": "6464895",
       "name": "飞机",
       "font_class": "feiji",
-      "unicode": "e602",
-      "unicode_decimal": 58882
+      "unicode": "e603",
+      "unicode_decimal": 58883
     },
     {
       "icon_id": "6905260",

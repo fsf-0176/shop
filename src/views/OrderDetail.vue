@@ -18,7 +18,7 @@
     <div class="productInfo">
       <p>商品信息</p>
       <div class="product">
-        <a href="#">
+        <router-link to="/product-list">
           <ul>
             <li>
               <img
@@ -45,7 +45,7 @@
             共8件
             <i class="iconfont icon-you"></i>
           </span>
-        </a>
+        </router-link>
       </div>
     </div>
     <div class="total">

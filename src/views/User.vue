@@ -1,7 +1,7 @@
 <template>
   <div class="about">
     <div class="user">
-      <a href="#">
+      <router-link to="/user-info">
         <div class="left">
           <div class="avatar">
             <img src="../assets/images/default.jpg" alt="" />
@@ -9,7 +9,7 @@
           <p>天青色等烟雨</p>
         </div>
         <i class="iconfont icon-you"></i>
-      </a>
+      </router-link>
     </div>
     <div class="myOrder">
       <div class="head">
