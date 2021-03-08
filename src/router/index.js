@@ -54,6 +54,11 @@ const routes = [
     path: '/user-info',
     name: 'UserInfo',
     component: () => import('../views/UserInfo.vue')
+  },
+  {
+    path: '/product-detail/:id(\\d+)',
+    name: 'ProductDetail',
+    component: () => import('../views/ProductDetail.vue')
   }
 ]
 
