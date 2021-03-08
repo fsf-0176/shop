@@ -115,7 +115,8 @@ export default {
     display: flex;
     font-size: 0.32rem;
     left: 0;
-    bottom: 1.2rem;
+    bottom: 1.24rem;
+
     input {
       margin-right: 0.2rem;
     }
@@ -126,8 +127,8 @@ export default {
       background: white;
       width: 4.8rem;
       box-sizing: border-box;
-      border-top: .01rem solid #ccc;
-      border-bottom: .01rem solid #ccc;
+      border-top: 0.01rem solid #ccc;
+      border-bottom: 0.01rem solid #ccc;
       & > span {
         margin-left: 0.4rem;
         color: rgb(255, 52, 93);

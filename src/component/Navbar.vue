@@ -20,7 +20,7 @@
         </router-link>
       </li>
       <li>
-        <router-link to="/about">
+        <router-link to="/user">
           <i class="iconfont icon-user_pre"></i>
           <span>我的</span>
         </router-link>

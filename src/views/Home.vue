@@ -1,6 +1,9 @@
 <template>
   <wrap>
-    <search :pos="{type:'static',padding:0,'radius':0}" text="Home Search" />
+    <search
+      :pos="{ type: 'static', padding: 0, radius: 0 }"
+      text="Home Search"
+    />
     <slide />
     <classify />
     <div class="home main padding-bottom">
@@ -11,13 +14,16 @@
         </div>
         <ul class="pro_list">
           <li v-for="list of item" :key="list.id">
-            <a class="pic" href="#">
+            <router-link
+              class="pic"
+              :to="{ name: 'ProductDetail', params: { id: 123 } }"
+            >
               <img :src="list.src" />
-            </a>
-            <a href="#">
+            </router-link>
+            <router-link :to="{ name: 'ProductDetail', params: { id: 123 } }">
               <p>{{ list.title }}</p>
               <span>¥ {{ list.money }}</span>
-            </a>
+            </router-link>
           </li>
         </ul>
       </div>
@@ -31,7 +37,6 @@ import Classify from '../component/Classify'
 import Wrap from '../component/Wrap'
 import Search from '../component/Search'
 
-const a = '1'
 export default {
   name: 'Home',
   components: { Slide, Classify, Wrap, Search },
@@ -59,7 +64,9 @@ export default {
           title: '支付测试兼打赏',
           money: '0.5',
           banner:
-            'http://nos.netease.com/yanxuan/f0d0e1a542e2095861b42bf789d948ce.jpg'
+            'http://nos.netease.com/yanxuan/f0d0e1a542e2095861b42bf789d948ce.jpg',
+          url: '/product-detail',
+          id: k + i
         }
       }
     }

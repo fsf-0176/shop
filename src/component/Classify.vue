@@ -50,6 +50,7 @@ ul {
     width: 1.505rem;
     min-width: 1.501rem;
     text-align: center;
+    margin-top: .2rem;
     & > a {
       color: rgb(49, 49, 49);
       text-decoration: none;

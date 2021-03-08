@@ -1,5 +1,6 @@
 <template>
   <div class="track">
+    <head-nav />
     <div class="wrap">
       <div class="time">今天</div>
       <ul class="list">
@@ -72,6 +73,13 @@
     </div>
   </div>
 </template>
+<script>
+import HeadNav from '../component/HeadNav'
+export default {
+  name: 'Track',
+  components: { HeadNav }
+}
+</script>
 <style lang="less" scoped>
 .track {
   height: 100%;
@@ -83,7 +91,7 @@
       width: 50%;
       box-sizing: border-box;
       background: white;
-      border: .01rem solid rgb(231, 231, 231);
+      border: 0.01rem solid rgb(231, 231, 231);
       padding: 0rem 0.2rem;
       position: relative;
       & > .del {
