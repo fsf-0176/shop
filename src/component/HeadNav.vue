@@ -52,6 +52,8 @@ header.fixed {
   z-index: 1;
   width: 7.5rem;
   top: 0;
-  left: 0;
+  left: 50%;
+  transform: translateX(-50%);
+
 }
 </style>

@@ -110,13 +110,15 @@ export default {
 .trolley {
   height: 100%;
   background: rgb(250, 250, 250);
+  padding-bottom: 3rem;
   & > .result {
     position: fixed;
     display: flex;
     font-size: 0.32rem;
-    left: 0;
-    bottom: 1.24rem;
-
+    left: 50%;
+    bottom: 1.2rem;
+    transform: translateX(-50%);
+    z-index: 1;
     input {
       margin-right: 0.2rem;
     }
@@ -205,10 +207,16 @@ export default {
             font-weight: inherit;
             margin: 0.1rem 0;
             color: #313131;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: normal;
           }
           & > p {
             color: #ccc;
             margin: 0.3rem 0 0.2rem;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: normal;
           }
           & > .price {
             display: inline-flex;

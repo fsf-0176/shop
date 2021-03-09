@@ -94,9 +94,10 @@ export default {
 .orderDetail {
   .sub {
     position: fixed;
-    left: 0;
+    left: 50%;
     bottom: 0;
-    width: 100%;
+    width: 7.5rem;
+    transform: translateX(-50%);
     span{
         display: inline-block;
         width: 40%;

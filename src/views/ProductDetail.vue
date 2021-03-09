@@ -19,7 +19,7 @@
         <span>已售1555份</span>
       </div>
     </div>
-    <div class="select">
+    <div class="select" @click="showPanel">
       <div class="selectNum">已选择：1套</div>
       <i class="iconfont icon-you"></i>
     </div>
@@ -34,7 +34,7 @@
         />
       </div>
     </div>
-    <div class="playNav" style="display: none">
+    <div class="playNav">
       <div class="text">
         <a href="#">
           <i class="iconfont icon-home"></i>
@@ -54,7 +54,8 @@
         <span class="play">立即购买</span>
       </div>
     </div>
-    <div class="panel">
+    <div :class="['mask', isClose ? 'active' : '']" @click="hidePanel"></div>
+    <div :class="['panel', isClose ? 'active' : '']">
       <div class="info">
         <div class="product">
           <div class="p">
@@ -69,7 +70,7 @@
               <p>请选择规格和数量</p>
             </div>
           </div>
-          <div class="colse">
+          <div class="close" @click="hidePanel">
             <i class="iconfont icon-jia"></i>
           </div>
         </div>
@@ -87,9 +88,11 @@
         <div class="sku">
           <p>数量</p>
           <div class="num">
-            <span class="iconfont icon-jian"></span>
-            <span class="input"><input type="text" value="1"></span>
-            <span class="iconfont icon-jia"></span>
+            <span class="iconfont icon-jian" @click="subtract"></span>
+            <span class="input"
+              ><input type="text" @blur="result" v-model="number"
+            /></span>
+            <span class="iconfont icon-jia" @click="add"></span>
           </div>
         </div>
       </div>
@@ -104,7 +107,9 @@ export default {
   name: 'ProductDetail',
   data() {
     return {
-      images: []
+      images: [],
+      isClose: false,
+      number: 1
     }
   },
   created() {
@@ -113,50 +118,101 @@ export default {
       arr.push(i + 1)
     })
     this.images = arr
+  },
+  methods: {
+    result() {
+      // 失去焦点后计算结果
+      this.number = parseInt(this.number) || 1
+    },
+    subtract() {
+      // 数量减少
+      this.number = --this.number || 1
+    },
+    add() {
+      // 数量增加
+      console.log(111)
+      this.number = ++this.number
+    },
+    showPanel() {
+      // 显示属性面板
+      this.isClose = true
+      document.body.style.overflow = 'hidden'
+    },
+    hidePanel() {
+      // 隐藏属性面板
+      this.isClose = false
+      document.body.style.overflow = 'auto'
+    }
   }
 }
 </script>
-<style lang="less" scoped>
+<style lang="less">
 .ProdcutDetail {
+  .mask {
+    position: fixed;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    width: 7.5rem;
+    background: black;
+    opacity: 0;
+    height: 100%;
+    transition: 0.5s;
+    pointer-events: none;
+  }
+  .mask.active {
+    opacity: 0.5;
+    pointer-events: all;
+  }
+  .panel.active {
+    transform: translate(-50%, 0%);
+  }
   .panel {
     background: white;
-    padding: 0.2rem;
+    padding: 0.2rem 0.2rem 0.5rem;
     border-top: 1px solid #ccc;
-    .sku{
-      .num{
+    position: fixed;
+    left: 50%;
+    bottom: 1.5rem;
+    width: 7.5rem;
+    transition: 0.5s;
+    transform: translate(-50%, 100%);
+    box-sizing: border-box;
+    .sku {
+      .num {
         display: flex;
-        span{
+        span {
           display: block;
-          border: .01rem solid #ccc;
-          height: .8rem;
+          border: 1px solid #ccc;
+          height: 0.8rem;
           width: 1rem;
           text-align: center;
-          line-height: .8rem;
-          font-size: .3rem;
+          line-height: 0.8rem;
+          font-size: 0.3rem;
         }
-        .input{
-            width: 1.2rem;
-            height: .8rem;
-            input{
-              width: 100%;
-              height: 90%;
-              font-size: .3rem;
-              border: none;
-              text-align: center;
-              outline: none;
-            }
+        .input {
+          width: 1.2rem;
+          height: 0.8rem;
+          input {
+            width: 100%;
+            height: 90%;
+            font-size: 0.3rem;
+            border: none;
+            text-align: center;
+            outline: none;
           }
+        }
       }
-      p{
-        padding: .3rem 0;
-        font-size: .32rem;
+      p {
+        padding: 0.3rem 0;
+        font-size: 0.32rem;
       }
-      .skuList{
-        span{
+      .skuList {
+        span {
           display: inline-block;
-          padding: .1rem .3rem;
-          margin-right: .3rem;
-          border: .01rem solid #ccc;
+          padding: 0.1rem 0.3rem;
+          margin-right: 0.3rem;
+          border: 0.01rem solid #ccc;
         }
       }
     }
@@ -174,12 +230,19 @@ export default {
           }
         }
       }
-      .colse i {
-        font-size: 0.5rem;
-        transform: rotate(45deg);
-        display: block;
-        font-weight: bold;
-        color: #8e8e8e;
+      .close {
+        width: 0.8rem;
+        height: 0.8rem;
+        display: flex;
+        justify-content: flex-end;
+        i {
+          font-size: 0.5rem;
+          transform: rotate(45deg);
+          display: block;
+          font-weight: bold;
+          color: #8e8e8e;
+          margin-right: 0.1rem;
+        }
       }
       .img {
         width: 1.8rem;
@@ -236,11 +299,13 @@ export default {
       }
     }
     position: fixed;
-    left: 0;
+    left: 50%;
     bottom: 0;
     display: flex;
     justify-content: space-between;
     width: 7.5rem;
+    z-index: 1;
+    transform: translateX(-50%);
   }
   padding-top: 1rem;
   min-height: 100%;

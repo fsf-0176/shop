@@ -30,8 +30,9 @@ export default {
   padding: 0.25rem;
   position: fixed;
   width: 7.5rem;
-  left: 0;
+  left: 50%;
   top: 0;
+  transform: translateX(-50%);
   z-index: 2;
   background: white;
   box-sizing: border-box;

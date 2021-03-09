@@ -1,7 +1,7 @@
 <template>
   <wrap>
     <search
-      :pos="{ type: 'static', padding: 0, radius: 0 }"
+      :pos="{ type: 'absolute', padding: 0, radius: 0 }"
       text="Home Search"
     />
     <slide />
@@ -93,6 +93,9 @@ export default {
       p {
         color: #313131;
         line-height: 2;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
       }
       span {
         color: rgb(255, 52, 86);
@@ -106,7 +109,8 @@ export default {
   & > li:nth-child(3n) {
     padding-right: 0;
   }
-  & > li:nth-child(3n) .pic {
+  & > li:nth-child(3n) .pic,
+  & > li:nth-child(3n) a {
     padding: 0 0.1rem;
   }
 }

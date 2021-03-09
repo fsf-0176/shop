@@ -147,20 +147,28 @@ export default {
 }
 </script>
 <style lang="less" scoped>
-.bottomText{
+.bottomText {
   font-size: 0.3rem;
-    text-align: center;
-    color: #ccc;
+  text-align: center;
+  color: #ccc;
 }
 .wrap {
   padding: 1.35rem 0.2rem 0;
+  display: flex;
+  justify-content: flex-end;
   .menus {
     position: fixed;
-    left: 0;
+    left: 50%;
     top: 1.35rem;
-    background: rgb(250, 250, 250);
-    width: 2rem;
+    width: 7.5rem;
     height: calc(100% - 2.45rem);
+    transform: translateX(-50%);
+    z-index: -1;
+    ul {
+      background: rgb(250, 250, 250);
+      width: 1.6rem;
+      height: 100%;
+    }
     li {
       a {
         font-size: 0.32rem;
@@ -179,28 +187,26 @@ export default {
   }
   .product {
     width: 5.4rem;
-    position: absolute;
-    right: 0;
     padding-bottom: 1.5rem;
     & > .pro_list > li {
       width: 50%;
-      padding: 0 .1rem;
+      padding: 0 0.1rem;
     }
-    & > .pro_list > li:nth-child(odd){
+    & > .pro_list > li:nth-child(odd) {
       padding-left: 0;
     }
 
     & > .pro_list > li:nth-child(3n) {
-      padding-right: .1rem;
+      padding-right: 0.1rem;
     }
-    & > .pro_list > li:nth-child(even){
+    & > .pro_list > li:nth-child(even) {
       padding-right: 0;
     }
     & .pro_list > li:nth-child(3n) .pic {
       padding: 0;
     }
-    & > .pro_list{
-      padding-top: .2rem;
+    & > .pro_list {
+      padding-top: 0.2rem;
     }
     & > .banner {
       overflow: hidden;

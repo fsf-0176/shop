@@ -189,6 +189,7 @@ ul.address {
   min-height: 100%;
   box-sizing: border-box;
   background: rgb(250, 250, 250);
+  padding-bottom: 1.4rem;
   .user {
     background: white;
     padding: 0.2rem;
