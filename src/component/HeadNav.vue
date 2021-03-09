@@ -1,5 +1,5 @@
 <template>
-  <header>
+  <header :class="fixed ? 'fixed' : ''">
     <div class="back iconfont icon-zuo" @click="go"></div>
     <div class="title">{{ title }}</div>
     <div></div>
@@ -12,6 +12,10 @@ export default {
     title: {
       type: String,
       default: '标题'
+    },
+    fixed: {
+      type: Boolean,
+      default: false
     }
   },
   methods: {
@@ -29,7 +33,7 @@ header {
   background: white;
   height: 1rem;
   line-height: 1rem;
-//   border-bottom: .01rem solid #efefef;
+  //   border-bottom: .01rem solid #efefef;
   box-sizing: border-box;
   & > .back {
     position: absolute;
@@ -42,5 +46,12 @@ header {
   & > .title {
     font-size: 0.4rem;
   }
+}
+header.fixed {
+  position: fixed;
+  z-index: 1;
+  width: 7.5rem;
+  top: 0;
+  left: 0;
 }
 </style>
