@@ -16,8 +16,9 @@
       </li>
       <li>
         <i class="iconfont icon-dizhi"></i>
-        <div class="box">
-          <input type="text" placeholder="选择省份、城市、区县" />
+        <div class="box" @click="open">
+          <input type="text" class="city" placeholder="选择省份、城市、区县" v-model="address" />
+          <!-- <div class="city">{{ address }}</div> -->
           <i class="iconfont icon-you"></i>
         </div>
       </li>
@@ -33,8 +34,9 @@
       <input type="checkbox" id="set-default" class="iconfont" />
     </div>
     <div class="save">保存</div>
-    <div class="select">
-      <v-distpicker type="mobile" />
+    <div :class="['mask', isOpen && 'active']" @click="close"></div>
+    <div :class="['select', isOpen && 'active']">
+      <v-distpicker type="mobile" @selected="result" />
     </div>
   </div>
 </template>
@@ -43,13 +45,63 @@ import HeadNav from '../component/HeadNav.vue'
 import VDistpicker from 'v-distpicker'
 export default {
   components: { HeadNav, VDistpicker },
-  name: 'Add'
+  name: 'Add',
+  data() {
+    return {
+      isOpen: false,
+      address: ''
+    }
+  },
+  methods: {
+    open() {
+      this.isOpen = true
+    },
+    close() {
+      this.isOpen = false
+    },
+    result(e) {
+      const province = e.province.value
+      const city = e.city.value
+      const area = e.area.value
+      this.address = province + city + area
+    }
+  }
 }
 </script>
 <style lang="less" scoped>
 .add {
   min-height: 100%;
   background: rgb(250, 250, 250);
+  .mask {
+    position: fixed;
+    width: 7.5rem;
+    height: 100%;
+    background: black;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    opacity: 0;
+    pointer-events: none;
+    z-index: -1;
+    transition: 0.5s;
+  }
+  .mask.active {
+    opacity: 0.5;
+    pointer-events: all;
+    z-index: 0;
+  }
+  .select {
+    position: fixed;
+    width: 7.5rem;
+    left: 50%;
+    transform: translate(-50%, 100%);
+    height: 7rem;
+    bottom: 0;
+    transition: 0.5s;
+  }
+  .select.active {
+    transform: translate(-50%, 0%);
+  }
   .save {
     width: 7.1rem;
     height: 1rem;
@@ -91,8 +143,13 @@ export default {
           border: none;
           outline: none;
         }
+        .city {
+          // color: #8e8e8e;
+          pointer-events: none;
+        }
         & > i {
           font-size: 0.35rem;
+          color: #8e8e8e;
         }
       }
     }

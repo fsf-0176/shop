@@ -75,6 +75,9 @@ export default {
 }
 </script>
 <style lang="less">
+#app{
+  padding-top: .852rem;
+}
 .pro_list {
   display: flex;
   flex-wrap: wrap;

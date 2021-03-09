@@ -1,9 +1,9 @@
 <template>
   <div class="search" :style="{ position: pos.type, padding: pos.padding }">
-    <a href="#" :style="{ 'border-radius': pos.radius }">
+    <router-link to="/search" :style="{ 'border-radius': pos.radius }">
       <i class="iconfont icon-sousuo"></i>
       {{ text }}
-    </a>
+    </router-link>
   </div>
 </template>
 <script>
