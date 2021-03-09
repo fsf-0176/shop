@@ -50,13 +50,13 @@
     </div>
     <ul class="address">
       <li class="top">
-        <a href="#" class="borderNone">
+        <router-link to="/address" class="borderNone">
           <span>
             <i class="iconfont icon-dizhi"></i>
             地址管理
           </span>
           <i class="iconfont icon-you"></i>
-        </a>
+        </router-link>
       </li>
       <li class="top">
         <router-link to="/track">
