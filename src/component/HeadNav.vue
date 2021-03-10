@@ -2,7 +2,6 @@
   <header :class="fixed ? 'fixed' : ''">
     <div class="back iconfont icon-zuo" @click="go"></div>
     <div class="title">{{ title }}</div>
-    <div></div>
   </header>
 </template>
 <script>
