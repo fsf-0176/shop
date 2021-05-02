@@ -75,8 +75,8 @@ export default {
 }
 </script>
 <style lang="less">
-#app{
-  padding-top: .852rem;
+#app {
+  padding-top: 0.852rem;
 }
 .pro_list {
   display: flex;

@@ -1,13 +1,13 @@
 <template>
   <nav id="nav">
     <ul>
-      <li>
+      <li v-for="item of category" :key="item.id">
         <a href="#">
           <i class="iconfont icon-jiaju"></i>
           <span>家居</span>
         </a>
       </li>
-      <li>
+      <!-- <li>
         <a href="#">
           <i class="iconfont icon-youhaowucanchu"></i>
           <span>餐厨</span>
@@ -30,7 +30,7 @@
           <i class="iconfont icon-feiji"></i>
           <span>志趣</span>
         </a>
-      </li>
+      </li> -->
     </ul>
   </nav>
 </template>
@@ -50,7 +50,7 @@ ul {
     width: 1.505rem;
     min-width: 1.501rem;
     text-align: center;
-    margin-top: .2rem;
+    margin-top: 0.2rem;
     & > a {
       color: rgb(49, 49, 49);
       text-decoration: none;
@@ -68,6 +68,7 @@ ul {
 }
 </style>
 <script>
+import { mapState } from 'vuex'
 import BSscroll from 'better-scroll'
 export default {
   name: 'Classify',
@@ -76,6 +77,14 @@ export default {
       scrollX: true,
       scrollY: false
     })
+  },
+  computed: {
+    ...mapState('index', {
+      category: (state) => state.category
+    })
+  },
+  created() {
+    this.$store.dispatch('index/category')
   }
 }
 </script>
