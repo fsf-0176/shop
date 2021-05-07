@@ -7,22 +7,22 @@
     <slide />
     <classify />
     <div class="home main padding-bottom">
-      <div class="wrap" v-for="item of categoryList" :key="item.id">
+      <div class="wrap" v-for="key of list" :key="key.id">
         <div class="classifyImg">
-          <img :src="item[0].banner" alt="" />
-          <span>{{ item[0].name }}</span>
+          <img :src="key.banner" alt="" />
+          <span>{{ key.name }}</span>
         </div>
         <ul class="pro_list">
-          <li v-for="list of item" :key="list.id">
+          <li v-for="item of key.data" :key="item.id">
             <router-link
               class="pic"
               :to="{ name: 'ProductDetail', params: { id: 123 } }"
             >
-              <img :src="list.src" />
+              <img :src="item.https_pic_url" />
             </router-link>
             <router-link :to="{ name: 'ProductDetail', params: { id: 123 } }">
-              <p>{{ list.title }}</p>
-              <span>¥ {{ list.money }}</span>
+              <p>{{ item.name }}</p>
+              <span>¥ {{ item.min_retail_price }}</span>
             </router-link>
           </li>
         </ul>
@@ -36,6 +36,7 @@ import Slide from '../component/Slide'
 import Classify from '../component/Classify'
 import Wrap from '../component/Wrap'
 import Search from '../component/Search'
+import { mapState } from 'vuex'
 
 export default {
   name: 'Home',
@@ -45,32 +46,50 @@ export default {
       categoryList: []
     }
   },
-  created() {
-    const data = []
-    const names = [
-      { type: 'type', name: '居家' },
-      { type: 'type', name: '餐厨' },
-      { type: 'type', name: '配件' },
-      { type: 'type', name: '杂货' },
-      { type: 'type', name: '志趣' }
-    ]
-    for (let k = 0; k < names.length; k++) {
-      data[k] = {}
-      for (let i = 0; i < 6; i++) {
-        data[k][i] = {
-          name: names[k].name,
-          src:
-            'https://githttps.hiolabs.com/5b7c1d0a-a12f-48e5-9487-efb1a81a6864',
-          title: '支付测试兼打赏',
-          money: '0.5',
-          banner:
-            'http://nos.netease.com/yanxuan/f0d0e1a542e2095861b42bf789d948ce.jpg',
-          url: '/product-detail',
-          id: k + i
-        }
-      }
+  computed: {
+    ...mapState('index', {
+      categoryIds: (state) => {
+        const list = []
+        state.category.forEach((item) => {
+          list.push(item.id)
+        })
+        return list
+      },
+      category: (state) => state.category,
+      list: (state) => state.goods
+    })
+  },
+  watch: {
+    categoryIds(val) {
+      this.$store.dispatch('index/goods', val)
     }
-    this.categoryList = data
+  },
+  created() {
+    // const data = []
+    // const names = [
+    //   { type: 'type', name: '居家' },
+    //   { type: 'type', name: '餐厨' },
+    //   { type: 'type', name: '配件' },
+    //   { type: 'type', name: '杂货' },
+    //   { type: 'type', name: '志趣' }
+    // ]
+    // for (let k = 0; k < names.length; k++) {
+    //   data[k] = {}
+    //   for (let i = 0; i < 6; i++) {
+    //     data[k][i] = {
+    //       name: names[k].name,
+    //       src:
+    //         'https://githttps.hiolabs.com/5b7c1d0a-a12f-48e5-9487-efb1a81a6864',
+    //       title: '支付测试兼打赏',
+    //       money: '0.5',
+    //       banner:
+    //         'http://nos.netease.com/yanxuan/f0d0e1a542e2095861b42bf789d948ce.jpg',
+    //       url: '/product-detail',
+    //       id: k + i
+    //     }
+    //   }
+    // }
+    // this.categoryList = data
   }
 }
 </script>

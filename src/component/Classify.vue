@@ -3,34 +3,10 @@
     <ul>
       <li v-for="item of category" :key="item.id">
         <a href="#">
-          <i class="iconfont icon-jiaju"></i>
-          <span>家居</span>
+          <img :src="item.icon_url" style="width: 0.7rem" alt="" />
+          <span>{{ item.name }}</span>
         </a>
       </li>
-      <!-- <li>
-        <a href="#">
-          <i class="iconfont icon-youhaowucanchu"></i>
-          <span>餐厨</span>
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <i class="iconfont icon-peijian"></i>
-          <span>配件</span>
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <i class="iconfont icon-zahuobianli"></i>
-          <span>杂货</span>
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <i class="iconfont icon-feiji"></i>
-          <span>志趣</span>
-        </a>
-      </li> -->
     </ul>
   </nav>
 </template>
@@ -80,7 +56,7 @@ export default {
   },
   computed: {
     ...mapState('index', {
-      category: (state) => state.category
+      category: state => state.category
     })
   },
   created() {

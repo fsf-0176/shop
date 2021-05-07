@@ -28,3 +28,11 @@ export const category = () => {
     url: '/index/category'
   })
 }
+
+export const goods = (data) => {
+  const cid = data.join()
+  return axios({
+    url: '/index/goods',
+    params: { cid }
+  })
+}
