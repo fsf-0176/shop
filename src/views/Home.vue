@@ -16,7 +16,7 @@
           <li v-for="item of key.data" :key="item.id">
             <router-link
               class="pic"
-              :to="{ name: 'ProductDetail', params: { id: 123 } }"
+              :to="{ name: 'ProductDetail', params: { id: item.id } }"
             >
               <img :src="item.https_pic_url" />
             </router-link>
@@ -41,11 +41,6 @@ import { mapState } from 'vuex'
 export default {
   name: 'Home',
   components: { Slide, Classify, Wrap, Search },
-  data() {
-    return {
-      categoryList: []
-    }
-  },
   computed: {
     ...mapState('index', {
       categoryIds: (state) => {
@@ -63,33 +58,6 @@ export default {
     categoryIds(val) {
       this.$store.dispatch('index/goods', val)
     }
-  },
-  created() {
-    // const data = []
-    // const names = [
-    //   { type: 'type', name: '居家' },
-    //   { type: 'type', name: '餐厨' },
-    //   { type: 'type', name: '配件' },
-    //   { type: 'type', name: '杂货' },
-    //   { type: 'type', name: '志趣' }
-    // ]
-    // for (let k = 0; k < names.length; k++) {
-    //   data[k] = {}
-    //   for (let i = 0; i < 6; i++) {
-    //     data[k][i] = {
-    //       name: names[k].name,
-    //       src:
-    //         'https://githttps.hiolabs.com/5b7c1d0a-a12f-48e5-9487-efb1a81a6864',
-    //       title: '支付测试兼打赏',
-    //       money: '0.5',
-    //       banner:
-    //         'http://nos.netease.com/yanxuan/f0d0e1a542e2095861b42bf789d948ce.jpg',
-    //       url: '/product-detail',
-    //       id: k + i
-    //     }
-    //   }
-    // }
-    // this.categoryList = data
   }
 }
 </script>
@@ -142,6 +110,9 @@ export default {
   position: relative;
   display: flex;
   overflow: hidden;
+  & > img {
+    max-width: 100%;
+  }
 }
 .classifyImg > span {
   position: absolute;

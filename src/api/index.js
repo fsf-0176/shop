@@ -36,3 +36,12 @@ export const goods = (data) => {
     params: { cid }
   })
 }
+
+export const goodsDetail = data => {
+  return axios({
+    url: '/index/goods/detail',
+    params: {
+      id: data.id
+    }
+  })
+}

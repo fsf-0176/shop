@@ -1,7 +1,8 @@
 import * as api from '../../api'
 const state = {
   category: [],
-  goods: []
+  goods: [],
+  goodsDetail: []
 }
 const mutations = {
   category: (state, data) => {
@@ -22,6 +23,9 @@ const mutations = {
       }
     }
     state.goods = data
+  },
+  goodsDetail: (state, data) => {
+    state.goodsDetail = data
   }
 }
 const actions = {
@@ -33,6 +37,12 @@ const actions = {
   goods: async ({ commit }, data) => {
     const res = await api.goods(data)
     commit('goods', res.data)
+    return res
+  },
+  goodsDetail: async ({ commit }, data) => {
+    console.log(data)
+    const res = await api.goodsDetail(data)
+    commit('goodsDetail', res.data)
     return res
   }
 }

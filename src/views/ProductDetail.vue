@@ -4,8 +4,8 @@
     <slide />
     <div class="shareBox">
       <div class="title">
-        <h4>母情节礼物-舒适安睡组合</h4>
-        <p>安心舒适是最好的礼物</p>
+        <h4>{{ detailData.name }}</h4>
+        <p>{{ detailData.goods_brief }}</p>
       </div>
       <div class="share">
         <i class="iconfont icon-fenxiang"></i>
@@ -13,26 +13,19 @@
       </div>
     </div>
     <div class="num">
-      <div class="money">¥999</div>
+      <div class="money">¥{{ detailData.min_retail_price }}</div>
       <div class="inventory">
-        <span>库存100</span>
-        <span>已售1555份</span>
+        <span>库存{{ detailData.goods_number }}</span>
+        <span>已售{{ detailData.sell_volume }}{{ detailData.goods_unit }}</span>
       </div>
     </div>
     <div class="select" @click="showPanel">
-      <div class="selectNum">已选择：1套</div>
+      <div class="selectNum">已选择：1{{ detailData.goods_unit }}</div>
       <i class="iconfont icon-you"></i>
     </div>
     <div class="detail">
       <div class="text">商品详情</div>
-      <div class="img">
-        <img
-          v-for="(item, index) of images"
-          :key="item"
-          :src="require('../assets/images/detail/' + (index + 1) + '.jpg')"
-          alt=""
-        />
-      </div>
+      <div class="img" v-html="detailData.goods_desc"></div>
     </div>
     <div class="playNav">
       <div class="text">
@@ -60,13 +53,12 @@
         <div class="product">
           <div class="p">
             <div class="img">
-              <img
-                src="https://githttps.hiolabs.com/5b7c1d0a-a12f-48e5-9487-efb1a81a6864"
-                alt=""
-              />
+              <img :src="detailData.list_pic_url" alt="" />
             </div>
             <div class="text">
-              <p>零售价：<span>0.5-999元</span></p>
+              <p>
+                零售价：<span>{{ detailData.min_retail_price }}元</span>
+              </p>
               <p>请选择规格和数量</p>
             </div>
           </div>
@@ -77,13 +69,18 @@
         <div class="sku">
           <p>规格</p>
           <div class="skuList">
-            <span>一根葱</span>
-            <span>一个面包</span>
+            <span
+              @click="sku(item.id)"
+              :ref="'sku' + item.id"
+              v-for="item of detailData.spe"
+              :key="item.id"
+              >{{ item.value }}</span
+            >
           </div>
         </div>
         <div class="sku">
           <p>库存</p>
-          100
+          {{ detailData.goods_number }}
         </div>
         <div class="sku">
           <p>数量</p>
@@ -100,6 +97,7 @@
   </div>
 </template>
 <script>
+import { mapState } from 'vuex'
 import HeadNav from '../component/HeadNav.vue'
 import Slide from '../component/Slide.vue'
 export default {
@@ -112,14 +110,22 @@ export default {
       number: 1
     }
   },
-  created() {
-    const arr = []
-    ;[...'.'.repeat(102)].forEach((k, i) => {
-      arr.push(i + 1)
+  computed: {
+    ...mapState('index', {
+      detailData: (state) => state.goodsDetail[0]
     })
-    this.images = arr
+  },
+  created() {
+    const id = this.$route.params.id
+    this.$store.dispatch('index/goodsDetail', { id })
   },
   methods: {
+    sku(id) {
+      const el = this.$refs['sku' + id]
+      el.classList.value.split(' ').includes('active')
+      el.classList.add('active')
+      el.classList.add('active1')
+    },
     result() {
       // 失去焦点后计算结果
       this.number = parseInt(this.number) || 1
@@ -213,6 +219,10 @@ export default {
           padding: 0.1rem 0.3rem;
           margin-right: 0.3rem;
           border: 0.01rem solid #ccc;
+        }
+        span.active {
+          border: 0.01rem solid rgb(255, 52, 86);
+          color: rgb(255, 52, 86);
         }
       }
     }
